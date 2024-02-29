@@ -11,12 +11,14 @@ class Dosen extends Model
 
     protected $table = 'dosens';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'kode',
         'nama',
     ];
 
-    public function matakuliah(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function matakuliahs(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Matakuliah::class);
     }

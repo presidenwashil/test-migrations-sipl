@@ -11,6 +11,8 @@ class Kelompok extends Model
 
     protected $table = 'kelompoks';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'nama',
         'matakuliah_id',
@@ -31,7 +33,7 @@ class Kelompok extends Model
         return $this->hasMany(Pertemuan::class);
     }
 
-    public function mahasiswa(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function mahasiswas(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Mahasiswa::class);
     }

@@ -11,6 +11,8 @@ class Matakuliah extends Model
 
     protected $table = 'matakuliahs';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'kode',
         'nama',
@@ -29,7 +31,7 @@ class Matakuliah extends Model
         return $this->hasMany(Kelompok::class);
     }
 
-    public function dosen(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function dosens(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Dosen::class);
     }

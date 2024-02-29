@@ -11,6 +11,8 @@ class Prodi extends Model
 
     protected $table = 'prodis';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'kode',
         'nama',

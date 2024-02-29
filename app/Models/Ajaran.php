@@ -11,6 +11,8 @@ class Ajaran extends Model
 
     protected $table = 'ajarans';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'tahun',
         'semester',
