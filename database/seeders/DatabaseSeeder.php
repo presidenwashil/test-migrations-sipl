@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Database\Seeders\RuanganSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,7 +12,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(RuanganSeeder::class);
+        $this->call([
+            AjaranSeeder::class,
+            ProdiSeeder::class,
+            RuanganSeeder::class,
+            DosenSeeder::class,
+            MahasiswaSeeder::class,
+            AsistenSeeder::class,
+            MatakuliahSeeder::class,
+            KelompokSeeder::class,
+            KelompokMahasiswaSeeder::class,
+            DosenMatakuliahSeeder::class,
+        ]);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

@@ -11,6 +11,8 @@ class Asisten extends Model
 
     protected $table = 'asistens';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'kode',
         'nama',

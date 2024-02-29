@@ -11,12 +11,14 @@ class Mahasiswa extends Model
 
     protected $table = 'mahasiswas';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'nim',
         'nama',
     ];
 
-    public function kelompok(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function kelompoks(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Kelompok::class);
     }
