@@ -1,10 +1,5 @@
 <?php
 
-use App\Http\Controllers\AbsensiMahasiswaController;
-use App\Http\Controllers\PertemuanController;
-use App\Http\Controllers\AjaranController;
-use App\Http\Controllers\DosenController;
-use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome');
 
-Route::resource('ajaran', AjaranController::class);
-Route::resource('dosen', DosenController::class);
-Route::resource('mahasiswa', MahasiswaController::class);
-Route::resource('pertemuan', PertemuanController::class);
-Route::resource('absensi-mahasiswa', AbsensiMahasiswaController::class);
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
+
+Route::view('pertemuan', 'pertemuan')
+    ->middleware(['auth'])
+    ->name('pertemuan');
+
+Route::view('jadwal', 'jadwal')
+    ->middleware(['auth'])
+    ->name('jadwal');
+
+require __DIR__.'/auth.php';
