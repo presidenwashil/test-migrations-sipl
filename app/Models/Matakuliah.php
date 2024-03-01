@@ -31,7 +31,7 @@ class Matakuliah extends Model
         return $this->hasMany(Jadwal::class);
     }
 
-    public function kelompok(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function kelompoks(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Kelompok::class);
     }
