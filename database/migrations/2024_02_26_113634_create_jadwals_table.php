@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('sesi');
             $table->string('waktu');
             $table->foreignId('ajaran_id')->constrained('ajarans');
+            $table->foreignId('matakuliah_id')->constrained('matakuliahs');            
             $table->foreignId('kelompok_id')->constrained('kelompoks');
             $table->foreignId('ruangan_id')->constrained('ruangans');
             $table->timestamps();

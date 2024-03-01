@@ -27,6 +27,11 @@ class Jadwal extends Model
         return $this->belongsTo(Ajaran::class);
     }
 
+    public function matakuliah(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Matakuliah::class);
+    }
+
     public function kelompok(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Kelompok::class);
