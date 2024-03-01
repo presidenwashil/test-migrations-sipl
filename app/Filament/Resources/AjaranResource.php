@@ -17,13 +17,25 @@ class AjaranResource extends Resource
 {
     protected static ?string $model = Ajaran::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+
+    protected static ?string $navigationGroup = 'Data Master';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('tahun')
+                    ->label('Tahun')
+                    ->required(),
+                Forms\Components\Select::make('semester')
+                    ->label('Semester')
+                    ->options([
+                        'Gasal' => 'Gasal',
+                        'Genap' => 'Genap',
+                    ])
+                    ->native(false)
+                    ->required(),
             ]);
     }
 
@@ -31,7 +43,15 @@ class AjaranResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('tahun'),
+                Tables\Columns\TextColumn::make('semester'),
+                Tables\Columns\ToggleColumn::make('is_active')
+                    ->beforeStateUpdated( function (Builder $query, $state) {
+
+                    })
+                    ->afterStateUpdated( function (Builder $query, $state) {
+
+                    }),
             ])
             ->filters([
                 //
