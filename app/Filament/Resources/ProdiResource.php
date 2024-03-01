@@ -17,13 +17,35 @@ class ProdiResource extends Resource
 {
     protected static ?string $model = Prodi::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
+
+    protected static ?string $navigationGroup = 'Data Master';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('kode')
+                    ->label('Kode')
+                    ->required()
+                    ->unique('prodis', 'kode')
+                    ->placeholder('Masukkan kode prodi'),
+                Forms\Components\TextInput::make('nama')
+                    ->label('Nama')
+                    ->required()
+                    ->placeholder('Masukkan nama prodi'),
+                Forms\Components\Select::make('jenjang')
+                    ->label('Jenjang')
+                    ->required()
+                    ->options([
+                        'D3' => 'D3',
+                        'D4' => 'D4',
+                        'S1' => 'S1',
+                        'S2' => 'S2',
+                        'S3' => 'S3',
+                    ])
+                    ->native(false)
+                    ->placeholder('Pilih jenjang prodi'),
             ]);
     }
 
@@ -31,7 +53,9 @@ class ProdiResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('kode'),
+                Tables\Columns\TextColumn::make('nama'),
+                Tables\Columns\TextColumn::make('jenjang'),
             ])
             ->filters([
                 //
