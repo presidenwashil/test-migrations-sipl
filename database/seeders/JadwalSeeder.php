@@ -14,8 +14,8 @@ class JadwalSeeder extends Seeder
     public function run(): void
     {
         Jadwal::insert([
-            ['hari' => 'Senin', 'sesi' => 1, 'waktu' => '08:00 - 09:30', 'ajaran_id' => 8, 'kelompok_id' => 7, 'ruangan_id' => 1, 'created_at' => now(), 'updated_at' => now()],
-            ['hari' => 'Senin', 'sesi' => 1, 'waktu' => '08:00 - 09:30', 'ajaran_id' => 8, 'kelompok_id' => 8, 'ruangan_id' => 2, 'created_at' => now(), 'updated_at' => now()],
+            ['hari' => 'Senin', 'sesi' => 1, 'waktu' => '08:00 - 09:30', 'ajaran_id' => 8, 'matakuliah_id' => 4,'kelompok_id' => 7, 'ruangan_id' => 1, 'created_at' => now(), 'updated_at' => now()],
+            ['hari' => 'Senin', 'sesi' => 1, 'waktu' => '08:00 - 09:30', 'ajaran_id' => 8, 'matakuliah_id' => 4,'kelompok_id' => 8, 'ruangan_id' => 2, 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }

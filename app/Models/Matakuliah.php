@@ -26,7 +26,12 @@ class Matakuliah extends Model
         return $this->belongsTo(Prodi::class);
     }
 
-    public function kelompok(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function jadwals(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Jadwal::class);
+    }
+
+    public function kelompoks(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Kelompok::class);
     }
