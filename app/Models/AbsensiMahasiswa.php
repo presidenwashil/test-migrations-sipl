@@ -11,6 +11,8 @@ class AbsensiMahasiswa extends Model
 
     protected $table = 'absensi_mahasiswas';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'status',
         'pertemuan_id',

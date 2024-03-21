@@ -1,5 +1,8 @@
 <?php
 
+use App\Livewire\RekapAbsen;
+use App\Livewire\InputPertemuan;
+use App\Http\Controllers\InputController;
 use App\Http\Controllers\AbsensiMahasiswaController;
 use App\Http\Controllers\PertemuanController;
 use App\Http\Controllers\AjaranController;
@@ -21,6 +24,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/form-input', [InputController::class, 'showForm'])->name('form.input');
+
+Route::post('/form-submit', [InputController::class, 'submitData'])->name('form.submit');
+
+Route::get('/rekap-absen', RekapAbsen::class);
+
+Route::get('/input-pertemuan', InputPertemuan::class);
 
 Route::resource('ajaran', AjaranController::class);
 Route::resource('dosen', DosenController::class);
