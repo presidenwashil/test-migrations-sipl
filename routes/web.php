@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Pages\Jadwal;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,5 +23,14 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+
+Route::get('jadwal', App\Livewire\Pages\Jadwal::class)
+    ->middleware(['auth'])
+    ->name('jadwal');
+
+Route::get('kelola-pertemuan/{kelompok}', App\Livewire\Pages\KelolaPertemuan::class)
+    ->middleware(['auth'])
+    ->name('kelola-pertemuan');
+
 
 require __DIR__.'/auth.php';
