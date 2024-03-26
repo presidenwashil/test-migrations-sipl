@@ -36,9 +36,41 @@ class KelolaPertemuan extends Component
         return \App\Models\Asisten::pluck('nama', 'id');
     }
 
-    public function updateSelect2Value($name, $value)
+    public function create()
     {
-        $this->$name = $value;
+        $this->validate([
+            'kelompokId' => 'required',
+            'pertemuanKe' => 'required',
+            'tanggal' => 'required',
+            'asistenId' => 'required',
+        ]);
+
+        \App\Models\Pertemuan::create([
+            'kelompok_id' => $this->kelompokId,
+            'pertemuan_ke' => $this->pertemuanKe,
+            'tanggal' => $this->tanggal,
+        ]);
+
+        \App\Models\AbsensiAsisten::create([
+            'asisten_id' => $this->asistenId,
+            'pertemuan_id' => $this->kelompok->pertemuan->last()->id,
+        ]);
+
+        foreach ($this->kelompok->mahasiswas as $mahasiswa) {
+            \App\Models\AbsensiMahasiswa::create([
+                'mahasiswa_id' => $mahasiswa->id,
+                'pertemuan_id' => $this->kelompok->pertemuan->last()->id,
+                'status' => 'Hadir',
+            ]);
+        }
+
+        \App\Models\PertemuanDetail::create([
+            'pertemuan_id' => $this->kelompok->pertemuan->last()->id,
+            'materi' => 'Materi pertemuan ke ' . $this->pertemuanKe,
+            'catatan' => 'Catatan pertemuan ke ' . $this->pertemuanKe,
+        ]);
+
+        $this->emit('pertemuanAdded');
     }
 
 }

@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Pertemuan</h1>
-                <a href="{{ route('pertemuan.create') }}" class="btn btn-primary">Tambah Pertemuan</a>
+                <a href="{{ route('pertemuan.create', ['kelompok' => $kelompok->id]) }}" class="btn btn-primary">Tambah Pertemuan</a>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -17,15 +17,19 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $p->pertemuan_ke }}</td>
-                                <td>{{ $p->kelompok->nama }}</td>
                                 <td>
-                                    <a href="{{ route('pertemuan.edit', $p->id) }}" class="btn btn-warning">Edit</a>
-                                    <form action="{{ route('pertemuan.destroy', $p->id) }}" method="post">
+                                    <a href="{{ route('pertemuan.edit',['kelompok' => $kelompok->id, 'pertemuan' => $p->id]) }}" class="btn btn-warning">Edit</a>
+                                    <form action="{{ route('pertemuan.destroy', ['kelompok' => $kelompok->id, 'pertemuan' => $p->id]) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Hapus</button>
                                     </form>
                                 </td>
+                                <td>
+                                    <a href="{{ route('absensi-asisten.index', ['kelompok' => $kelompok->id, 'pertemuan' => $p->id]) }}" class="btn btn-info">Absensi Asisten</a>
+                                    <a href="{{ route('absensi-mahasiswa.index', ['kelompok' => $kelompok->id, 'pertemuan' => $p->id]) }}" class="btn btn-info">Absensi Mahasiswa</a>
+                                </td>
+                                
                             </tr>
                         @endforeach
                     </tbody>
@@ -34,4 +38,6 @@
             </div>
         </div>
     </div>
+
+    <a href="{{ route('kelompok.index') }}" class="btn btn-primary">Kembali</a>
 </div>

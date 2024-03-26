@@ -33,4 +33,16 @@ Route::get('kelola-pertemuan/{kelompok}', App\Livewire\Pages\KelolaPertemuan::cl
     ->name('kelola-pertemuan');
 
 
+Route::resource('kelompok', App\Http\Controllers\KelompokController::class);
+
+Route::prefix('kelompok/{kelompok}')->group(function () {
+    Route::resource('pertemuan', App\Http\Controllers\PertemuanController::class);
+
+    Route::prefix('pertemuan/{pertemuan}')->group(function () {
+        Route::resource('absensi-asisten', App\Http\Controllers\AbsensiAsistenController::class);
+        Route::resource('absensi-mahasiswa', App\Http\Controllers\AbsensiMahasiswaController::class);
+    });
+});
+
+
 require __DIR__.'/auth.php';

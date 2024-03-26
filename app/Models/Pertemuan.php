@@ -21,12 +21,12 @@ class Pertemuan extends Model
         return $this->belongsTo(Kelompok::class);
     }
 
-    public function absensiMahasiswa(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function absensiMahasiswas(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(AbsensiMahasiswa::class);
     }
 
-    public function absensiAsisten(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function absensiAsistens(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(AbsensiAsisten::class);
     }

@@ -7,7 +7,8 @@
                 <th>No</th>
                 <th>Matakuliah</th>
                 <th>Kelompok</th>
-                <th>Aksi</th>
+                <th>Action</th>
+                <th>Sub Action</th>
             </tr>
         </thead>
         <tbody>
@@ -19,16 +20,23 @@
                     <td>
                         <a href="{{ route('kelompok.show', $item->id) }}">Detail</a>
                         <a href="{{ route('kelompok.edit', $item->id) }}">Edit</a>
-                        <form action="{{ route('kelompok.destroy', $item->id) }}" method="post">
+                        <form action="{{ route('kelompok.destroy', $item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Hapus</button>
                         </form>
+                    </td>
+                    <td>
+                        <li>
+                            <a href="{{ route('pertemuan.index', ['kelompok' => $item->id]) }}">List Pertemuan</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('kelompok.show', $item->id) }}">Rekap</a>
+                        </li>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
     {{-- {{ $kelompok->links() }} --}}
-    <a href="{{ route('jadwal.index') }}">Kembali</a>
 </div>
